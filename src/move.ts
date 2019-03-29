@@ -20,7 +20,7 @@ export const move = async (evt: IEvent) => {
 
   const msgs = await receiveMsgs(evt.srcUrl)
   await Promise.all(msgs.map(m => limit<Message[], any>(moveMsg, m)))
-  log(`Moved ${msgs.length} messages.`)
+  log(`Moved ${msgs.length} messages`)
 }
 
 const receiveMsgs = async (url: string) => {
