@@ -5,6 +5,7 @@ import pWhilst from "p-whilst"
 import { IEvent } from "."
 
 const limit = pLimit(50)
+// @ts-ignore
 const sqs = new SQS({ httpOptions: { sslEnabled: true, timeout: 5000 } })
 
 export const move = async (evt: IEvent) => {
