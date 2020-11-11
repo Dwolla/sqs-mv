@@ -20,7 +20,7 @@ export const move = async (evt: IEvent) => {
   }
 
   const msgs = await receiveMsgs(evt.srcUrl)
-  await Promise.all(msgs.map(m => limit<Message[], any>(moveMsg, m)))
+  await Promise.all(msgs.map((m) => limit<Message[], any>(moveMsg, m)))
   log(`Moved ${msgs.length} messages`)
 }
 
@@ -38,14 +38,16 @@ const receiveMsgs = async (url: string) => {
 }
 
 const receiveMsgBatch = async (url: string) =>
-  (await sqs
-    .receiveMessage({
-      MaxNumberOfMessages: 10,
-      MessageAttributeNames: ["All"],
-      QueueUrl: url,
-      VisibilityTimeout: 10
-    })
-    .promise()).Messages
+  (
+    await sqs
+      .receiveMessage({
+        MaxNumberOfMessages: 10,
+        MessageAttributeNames: ["All"],
+        QueueUrl: url,
+        VisibilityTimeout: 10,
+      })
+      .promise()
+  ).Messages
 
 const getDst = (evt: IEvent, m: Message) => {
   const dst =

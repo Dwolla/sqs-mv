@@ -7,8 +7,8 @@
     "deploy": "npm test && sls deploy",
     "format": "skripts prettier",
     "invoke": "ENVIRONMENT=local sls invoke local --function func",
-    "lint": "skripts tslint",
-    "jest": "ENVIRONMENT=test skripts jest",
+    "lint": "skripts lint --fix",
+    "jest": "jest",
     "test": "npm run lint && npm run jest && sls package",
     "watch": "npm run jest -- --watch"
   },
@@ -22,13 +22,13 @@
     "aws-sdk": "^2.493.0",
     "husky": "^3.0.0",
     "serverless-pseudo-parameters": "^2.4.0",
-    "skripts": "0.0.16",
+    "skripts": "^0.8.2",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "skripts lint-staged"
+      "pre-commit": "skripts pre-commit"
     }
   }
 }
