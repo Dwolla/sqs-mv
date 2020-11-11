@@ -1,0 +1,6 @@
+{
+  "extends": "./node_modules/skripts/.eslintrc",
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": ["off"]
+  }
+} 

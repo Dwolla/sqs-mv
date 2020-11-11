@@ -8,7 +8,7 @@ const deleteMessage = jest.fn()
 sqs.mockImplementationOnce(() => ({
   deleteMessage,
   receiveMessage,
-  sendMessage
+  sendMessage,
 }))
 
 import { move } from "../src/move"
@@ -30,7 +30,7 @@ describe("move", () => {
 
   it("throws if missing dstUrl and dstUrlAttr", async () => {
     mockReceive({
-      Messages: [{ Body: "b", MessageAttributes: {}, ReceiptHandle: "rh" }]
+      Messages: [{ Body: "b", MessageAttributes: {}, ReceiptHandle: "rh" }],
     })
     mockReceive({})
 
@@ -41,7 +41,7 @@ describe("move", () => {
 
   it("throws if dstUrlAttr but not in attributes", async () => {
     mockReceive({
-      Messages: [{ Body: "b", MessageAttributes: {}, ReceiptHandle: "rh" }]
+      Messages: [{ Body: "b", MessageAttributes: {}, ReceiptHandle: "rh" }],
     })
     mockReceive({})
 
@@ -53,8 +53,8 @@ describe("move", () => {
   it("moves if dst provided", async () => {
     mockReceive({
       Messages: [
-        { Body: body, MessageAttributes: {}, ReceiptHandle: receiptHandle }
-      ]
+        { Body: body, MessageAttributes: {}, ReceiptHandle: receiptHandle },
+      ],
     })
     mockReceive({})
     sendMessage.mockReturnValue({ promise: () => ({}) })
@@ -71,9 +71,9 @@ describe("move", () => {
         {
           Body: body,
           MessageAttributes: { url: { StringValue: dstUrl } },
-          ReceiptHandle: receiptHandle
-        }
-      ]
+          ReceiptHandle: receiptHandle,
+        },
+      ],
     })
     mockReceive({})
     sendMessage.mockReturnValue({ promise: () => ({}) })
@@ -92,16 +92,16 @@ describe("move", () => {
       MaxNumberOfMessages: 10,
       MessageAttributeNames: ["All"],
       QueueUrl: srcUrl,
-      VisibilityTimeout: 10
+      VisibilityTimeout: 10,
     })
     expect(sendMessage).toHaveBeenCalledWith({
       MessageBody: body,
-      QueueUrl: dstUrl
+      QueueUrl: dstUrl,
     })
     expect(sendMessage).toHaveBeenCalledTimes(1)
     expect(deleteMessage).toHaveBeenCalledWith({
       QueueUrl: srcUrl,
-      ReceiptHandle: receiptHandle
+      ReceiptHandle: receiptHandle,
     })
     expect(deleteMessage).toHaveBeenCalledTimes(1)
   }
