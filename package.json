@@ -24,7 +24,7 @@
     "serverless-pseudo-parameters": "^2.4.0",
     "skripts": "^0.8.2",
     "tslint": "^5.18.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.9.1"
   },
   "husky": {
     "hooks": {
