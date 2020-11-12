@@ -6,7 +6,7 @@ An AWS Lambda function that moves SQS messages from one queue to another.
 
 - Clone the repository and run `npm install`
 - Ensure your [AWS credentials are available](https://serverless.com/framework/docs/providers/aws/guide/credentials/)
-- Deploy with `ENVIRONMENT=your-env DEPLOYMENT_BUCKET=your-bucket npm run deploy`
+- Deploy with `ENVIRONMENT=your-env SKRIPTS_DEPLOYMENT_BUCKET=your-bucket npm run deploy`
 
 ## Usage
 
