@@ -2,7 +2,7 @@
   "name": "sqs-mv",
   "version": "1.0.0",
   "scripts": {
-    "build": "sls webpack",
+    "build": "ENVIRONMENT=local sls webpack",
     "clean": "skripts src scripts --pattern '*.js'",
     "deploy": "npm test && sls deploy",
     "format": "skripts prettier",
