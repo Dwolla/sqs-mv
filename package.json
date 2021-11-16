@@ -19,7 +19,7 @@
     "source-map-support": "^0.5.12"
   },
   "devDependencies": {
-    "aws-sdk": "^2.493.0",
+    "aws-sdk": "^2.814.0",
     "husky": "^3.0.0",
     "serverless-pseudo-parameters": "^2.4.0",
     "skripts": "^0.8.2",
