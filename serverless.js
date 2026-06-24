@@ -30,7 +30,7 @@ module.exports = {
           "arn:aws:sqs:${self:provider.region}:#{AWS::AccountId}:webhooks-*-consumer-queue-${self:provider.stage}",
       },
     ],
-    runtime: "nodejs16.x",
+    runtime: "nodejs22.x",
   },
   functions: { func: { handler: "src/handler.handle", timeout: 30 } },
 }
